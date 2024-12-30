@@ -25,7 +25,8 @@
 #
 # ******************************************************************************
 from qgis.core import *
-from os import path, tempnam, remove
+from os import path, remove
+import tempfile
 import codecs
 import uuid
 
@@ -59,7 +60,8 @@ class MetadataProvider:
         raise Exception()
 
     def SaveToTempFile(self):
-        tempPath = tempnam()
+        with tempfile.NamedTemporaryFile() as temp_file:
+            tempPath = temp_file.name
         # fucked mp and usgs tools!! need xml ext!
         tempPath = tempPath + str(uuid.uuid4()).replace("-", "") + ".xml"
 

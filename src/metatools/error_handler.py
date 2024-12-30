@@ -23,12 +23,10 @@
 # MA 02111-1307, USA.
 #
 # ******************************************************************************
-from qgis.PyQt.QtXmlPatterns import QAbstractMessageHandler
 
 
-class ErrorHandler(QAbstractMessageHandler):
+class ErrorHandler:
     def __init__(self, windowTitle):
-        QAbstractMessageHandler.__init__(self)
         self.windowTitle = windowTitle
         self.errorOccured = False
 
