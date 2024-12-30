@@ -40,7 +40,10 @@ FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "ui/datatype_editor.ui")
 )
 
-from datatype_template_manager import DatatypeTemplateManager, DatatypeTemplate
+from .datatype_template_manager import (
+    DatatypeTemplateManager,
+    DatatypeTemplate,
+)
 
 currentPath = os.path.abspath(os.path.dirname(__file__))
 
@@ -60,7 +63,7 @@ class DataTypeEditorDialog(QDialog, FORM_CLASS):
             self.leSpatialAccuracy.setValidator(QDoubleValidator())
             self.leSpatialScale.setValidator(QIntValidator())
 
-        for key, value in DatatypeTemplate.TYPES.iteritems():
+        for key, value in DatatypeTemplate.TYPES.items():
             self.cmbType.addItem(value, key)
 
         self.btnNew.clicked.connect(self.newDatatype)
@@ -168,8 +171,7 @@ class DataTypeEditorDialog(QDialog, FORM_CLASS):
             QMessageBox.warning(
                 self,
                 self.tr("Manage data types"),
-                self.tr("Template can't be saved: ")
-                + unicode(sys.exc_info()[1]),
+                self.tr("Template can't be saved: ") + str(sys.exc_info()[1]),
             )
             return
 
@@ -232,9 +234,7 @@ class DataTypeEditorDialog(QDialog, FORM_CLASS):
         template.accuracy = self.leSpatialAccuracy.text()
         template.scale = self.leSpatialScale.text()
 
-        template.type = unicode(
-            self.cmbType.itemData(self.cmbType.currentIndex())
-        )
+        template.type = str(self.cmbType.itemData(self.cmbType.currentIndex()))
 
         template.keywords = []
         for num in range(self.lstKeywords.count()):

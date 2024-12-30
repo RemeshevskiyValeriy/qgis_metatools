@@ -140,7 +140,7 @@ class OrganizationTemplateManager:
         doc.appendChild(root)
 
         orgsElem = doc.createElement("institutions")
-        for name, org in self.organizations.iteritems():
+        for name, org in self.organizations.items():
             el = self.saveInstitution(org, doc)
             orgsElem.appendChild(el)
 
@@ -227,13 +227,13 @@ class OrganizationTemplateManager:
 
     def addTemplate(self, templateName, template):
         # delete previous template if any
-        if self.organizations.has_key(templateName):
+        if templateName in self.organizations:
             del self.organizations[templateName]
 
         self.organizations[templateName] = template
 
     def removeTemplate(self, templateName):
-        if self.organizations.has_key(templateName):
+        if templateName in self.organizations:
             del self.organizations[templateName]
             self.saveTemplates()
 

@@ -40,7 +40,7 @@ FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "ui/license_editor.ui")
 )
 
-from license_template_manager import LicenseTemplateManager, LicenseTemplate
+from .license_template_manager import LicenseTemplateManager, LicenseTemplate
 
 currentPath = os.path.abspath(os.path.dirname(__file__))
 
@@ -149,8 +149,7 @@ class LicenseEditorDialog(QDialog, FORM_CLASS):
             QMessageBox.warning(
                 self,
                 self.tr("Manage licenses"),
-                self.tr("Template can't be saved: ")
-                + unicode(sys.exc_info()[1]),
+                self.tr("Template can't be saved: ") + str(sys.exc_info()[1]),
             )
             return
 

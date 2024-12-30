@@ -37,14 +37,14 @@ class WorkflowTemplateManager:
     EXT = ".xml"
 
     def __init__(self, basePluginPath):
-        self.basePluginPath = unicode(basePluginPath)
+        self.basePluginPath = str(basePluginPath)
 
     def getTemplatesPath(self):
         return os.path.join(self.basePluginPath, self.SUBFOLDER)
 
     def getTemplateFilePath(self, templateName):
         return os.path.join(
-            self.getTemplatesPath(), unicode(templateName) + self.EXT
+            self.getTemplatesPath(), str(templateName) + self.EXT
         )
 
     def getTemplateList(self):
@@ -96,7 +96,7 @@ class WorkflowTemplateManager:
         templateFile = codecs.open(
             self.getTemplateFilePath(template.name), "w", encoding="utf-8"
         )
-        templateFile.write(unicode(xmlTemplate.toString()))
+        templateFile.write(str(xmlTemplate.toString()))
         templateFile.close()
 
     def removeTemplate(self, templateName):

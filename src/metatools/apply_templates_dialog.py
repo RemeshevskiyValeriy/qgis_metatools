@@ -36,17 +36,17 @@ from qgis.gui import *
 
 import sys, os, codecs, shutil
 
-from license_editor_dialog import LicenseEditorDialog
-from license_template_manager import LicenseTemplateManager
+from .license_editor_dialog import LicenseEditorDialog
+from .license_template_manager import LicenseTemplateManager
 
-from workflow_editor_dialog import WorkflowEditorDialog
-from workflow_template_manager import WorkflowTemplateManager
+from .workflow_editor_dialog import WorkflowEditorDialog
+from .workflow_template_manager import WorkflowTemplateManager
 
-from organization_editor_dialog import OrganizationEditorDialog
-from organization_template_manager import OrganizationTemplateManager
+from .organization_editor_dialog import OrganizationEditorDialog
+from .organization_template_manager import OrganizationTemplateManager
 
-from datatype_editor_dialog import DataTypeEditorDialog
-from datatype_template_manager import DatatypeTemplateManager
+from .datatype_editor_dialog import DataTypeEditorDialog
+from .datatype_template_manager import DatatypeTemplateManager
 
 import os
 
@@ -54,9 +54,9 @@ FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "ui/apply_templates.ui")
 )
 
-from standard import MetaInfoStandard
-from metadata_provider import FileMetadataProvider
-import utils
+from .standard import MetaInfoStandard
+from .metadata_provider import FileMetadataProvider
+from . import utils
 
 currentPath = os.path.abspath(os.path.dirname(__file__))
 
@@ -276,9 +276,9 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
             )
             return
 
-        profilePath = unicode(
+        profilePath = str(
             QDir.toNativeSeparators(
-                os.path.join(currentPath, "xml_profiles", unicode(profile))
+                os.path.join(currentPath, "xml_profiles", str(profile))
             )
         )
 
@@ -296,13 +296,13 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
                             self,
                             self.tr("Metatools"),
                             self.tr("Metadata file can't be created: ")
-                            + unicode(sys.exc_info()[1]),
+                            + str(sys.exc_info()[1]),
                         )
                         continue
 
                 # check metadata standard
                 metaprovider = FileMetadataProvider(
-                    unicode(layer)
+                    str(layer)
                 )  # temporary code
                 standard = MetaInfoStandard.tryDetermineStandard(metaprovider)
                 if standard != MetaInfoStandard.ISO19115:
@@ -316,7 +316,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
                     )
                     continue
 
-                if os.path.splitext(unicode(layer))[1].lower() not in (
+                if os.path.splitext(str(layer))[1].lower() not in (
                     ".shp",
                     ".mif",
                     ".tab",
@@ -346,7 +346,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
 
                 # save metadata file (hmm.. why not QFile?)
                 metafile = codecs.open(metaFilePath, "w", encoding="utf-8")
-                metafile.write(unicode(metaXML, "utf-8"))
+                metafile.write(str(metaXML, "utf-8"))
                 metafile.close()
 
             QMessageBox.information(
@@ -365,7 +365,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
                 self,
                 self.tr("Metatools"),
                 self.tr("Operation can't be completed: ")
-                + unicode(sys.exc_info()[1]),
+                + str(sys.exc_info()[1]),
             )
 
     # ----------- Appliers -----------

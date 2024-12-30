@@ -40,7 +40,7 @@ class ErrorHandler(QAbstractMessageHandler):
 
     def handleMessage(self, msg_type, desc, identifier, loc):
         # QMessageBox.information(None, "Error", desc + " Ident: " + identifier.toString() + " Line: " + QString(str(loc.line())))
-        from metatoolsviewer import MetatoolsViewer
+        from .metatoolsviewer import MetatoolsViewer
 
         message_type = {0: "Debug", 1: "Warning", 2: "Critical", 3: "Fatal"}
 

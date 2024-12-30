@@ -40,7 +40,7 @@ FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "ui/viewer.ui")
 )
 
-from error_handler import ErrorHandler
+from .error_handler import ErrorHandler
 
 
 class MetatoolsViewer(QDialog, FORM_CLASS):
@@ -89,7 +89,7 @@ class MetatoolsViewer(QDialog, FORM_CLASS):
         # load data
         xsltFile = QFile(xsltFilePath)
         xsltFile.open(QIODevice.ReadOnly)
-        xslt = unicode(xsltFile.readAll())
+        xslt = str(xsltFile.readAll())
         xsltFile.close()
 
         src = metaProvider.getMetadata()

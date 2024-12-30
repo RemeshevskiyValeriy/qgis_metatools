@@ -39,7 +39,7 @@ import os
 FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "ui/organization_editor.ui")
 )
-from organization_template_manager import (
+from .organization_template_manager import (
     OrganizationTemplateManager,
     OrganizationTemplate,
 )

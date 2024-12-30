@@ -36,7 +36,10 @@ from qgis.gui import *
 
 import os, sys
 
-from workflow_template_manager import WorkflowTemplateManager, WorkflowTemplate
+from .workflow_template_manager import (
+    WorkflowTemplateManager,
+    WorkflowTemplate,
+)
 
 FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "ui/workflow_editor.ui")
@@ -150,8 +153,7 @@ class WorkflowEditorDialog(QDialog, FORM_CLASS):
             QMessageBox.warning(
                 self,
                 self.tr("Manage workflows"),
-                self.tr("Template can't be saved: ")
-                + unicode(sys.exc_info()[1]),
+                self.tr("Template can't be saved: ") + str(sys.exc_info()[1]),
             )
             return
 

@@ -104,7 +104,7 @@ class MetadataProvider:
             if layer.providerType() != "gdal":
                 return (False, "Only gdal-based raster are supported now!")
             # Only file based rasters are supported now
-            if not path.exists(unicode(layer.source())):
+            if not path.exists(str(layer.source())):
                 return (False, "Only file based rasters are supported now!")
 
         # Check vector layers
@@ -160,10 +160,10 @@ class FileMetadataProvider(MetadataProvider):
     META_EXT = ".xml"
 
     def __init__(self, layer):
-        if type(layer) == type(unicode()):
+        if isinstance(layer, type(str())):
             self.layerFilePath = layer
         else:
-            self.layerFilePath = unicode(layer.source())
+            self.layerFilePath = str(layer.source())
         self.metaFilePath = self.layerFilePath + self.META_EXT
 
     def checkExists(self):

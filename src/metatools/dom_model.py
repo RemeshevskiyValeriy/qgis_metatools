@@ -74,7 +74,7 @@ class DomItem:
         return self.parentItem
 
     def child(self, i):
-        if self.childItems.has_key(i):
+        if i in self.childItems:
             return self.childItems[i]
 
         if i >= 0 and i < self.domNode.childNodes().count():

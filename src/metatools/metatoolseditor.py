@@ -34,7 +34,7 @@ from qgis.core import *
 from qgis.gui import *
 
 import os, sys
-from dom_model import DomModel, FilterDomModel
+from .dom_model import DomModel, FilterDomModel
 
 FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "ui/editor.ui")
@@ -225,15 +225,14 @@ class MetatoolsEditor(QDialog, FORM_CLASS):
 
     def saveMetadata(self):
         try:
-            self.metaProvider.setMetadata(unicode(self.metaXML.toString()))
+            self.metaProvider.setMetadata(str(self.metaXML.toString()))
             # TODO: create preview image if need
             self.btnSave.setEnabled(False)
         except:
             QMessageBox.warning(
                 self,
                 self.tr("Metatools"),
-                self.tr("Metadata can't be saved:\n")
-                + unicode(sys.exc_info()[0]),
+                self.tr("Metadata can't be saved:\n") + str(sys.exc_info()[0]),
             )
 
     def loadFilter(self):
@@ -284,8 +283,8 @@ class MetatoolsEditor(QDialog, FORM_CLASS):
     def fillTableWidget(self):
         row = 0
         for nameItemIndex, valueItemIndex in self.filteredIndexes:
-            name = unicode(self.model.data(nameItemIndex, Qt.DisplayRole))
-            value = unicode(self.model.data(valueItemIndex, Qt.DisplayRole))
+            name = str(self.model.data(nameItemIndex, Qt.DisplayRole))
+            value = str(self.model.data(valueItemIndex, Qt.DisplayRole))
             self.tbwFiltered.setItem(row, 0, QTableWidgetItem(name))
             self.tbwFiltered.setItem(row, 1, QTableWidgetItem(value))
             row += 1
