@@ -25,8 +25,8 @@
 #
 # ******************************************************************************
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtGui import *
 
 from qgis.core import *
 from qgis.gui import *
@@ -402,11 +402,11 @@ class MetatoolsPlugin:
 
         dlg = MetatoolsEditor()
         dlg.setContent(self.metaProvider)
-        dlg.exec_()
+        dlg.exec()
 
     def doConfigure(self):
         dlg = MetatoolsSettings()
-        dlg.exec_()
+        dlg.exec()
 
         settings = QSettings("NextGIS", "metatools")
         hasTools = settings.value("tools/hasFGDC", False)
@@ -428,7 +428,7 @@ class MetatoolsPlugin:
             )
             return
         dlg = ApplyTemplatesDialog(self.iface)
-        dlg.exec_()
+        dlg.exec()
 
     def doView(self):
         try:
@@ -479,7 +479,7 @@ class MetatoolsPlugin:
 
         dlg = MetatoolsViewer()
         if dlg.setContent(self.metaProvider, xsltFilePath):
-            dlg.exec_()
+            dlg.exec()
 
     def checkMetadata(self):
         if not self.metaProvider.checkExists():
@@ -664,7 +664,7 @@ class MetatoolsPlugin:
         dlg.setWindowTitle(
             QCoreApplication.translate("Metatools", "MP result")
         )
-        dlg.exec_()
+        dlg.exec()
 
     # ----------------- validator -----------------
 
@@ -686,7 +686,7 @@ class MetatoolsPlugin:
             )
             return
 
-        from PyQt4.QtXmlPatterns import QXmlSchema, QXmlSchemaValidator
+        from qgis.PyQt.QtXmlPatterns import QXmlSchema, QXmlSchemaValidator
         # TODO: validate metadata file
 
         # setup xml schema

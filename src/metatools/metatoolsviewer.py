@@ -25,11 +25,11 @@
 #
 # ******************************************************************************
 
-from PyQt4 import uic
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyQt4.QtXml import *
-from PyQt4.QtXmlPatterns import *
+from qgis.PyQt import uic
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtGui import *
+from qgis.PyQt.QtXml import *
+from qgis.PyQt.QtXmlPatterns import *
 
 from qgis.core import *
 from qgis.gui import *
@@ -65,12 +65,12 @@ class MetatoolsViewer(QDialog, FORM_CLASS):
         self.contextMenu.addSeparator()
         self.contextMenu.addAction(self.actionPrint)
 
-        self.contextMenu.exec_(self.webView.mapToGlobal(position))
+        self.contextMenu.exec(self.webView.mapToGlobal(position))
 
     def slotPrint(self):
         printer = QPrinter()
         dialog = QPrintDialog(printer)
-        if dialog.exec_() == QDialog.Accepted:
+        if dialog.exec() == QDialog.Accepted:
             self.webView.print_(printer)
 
     def slotCopyAll(self):

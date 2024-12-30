@@ -25,11 +25,11 @@
 #
 # ******************************************************************************
 
-from PyQt4 import uic
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyQt4.QtXml import *
-from PyQt4.QtXmlPatterns import *
+from qgis.PyQt import uic
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtGui import *
+from qgis.PyQt.QtXml import *
+from qgis.PyQt.QtXmlPatterns import *
 
 from qgis.core import *
 from qgis.gui import *
@@ -157,7 +157,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
         oldValue = self.cmbLicense.currentText()
 
         dlg = LicenseEditorDialog()
-        dlg.exec_()
+        dlg.exec()
 
         self.updateLicenseTemplatesList()
 
@@ -170,7 +170,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
         oldValue = self.cmbDatatype.currentText()
 
         dlg = DataTypeEditorDialog()
-        dlg.exec_()
+        dlg.exec()
 
         self.updateDatatypesTemplatesList()
 
@@ -183,7 +183,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
         oldValue = self.cmbWorkflow.currentText()
 
         dlg = WorkflowEditorDialog()
-        dlg.exec_()
+        dlg.exec()
 
         self.updateWorkflowTemplatesList()
 
@@ -196,7 +196,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
         oldValue = self.cmbOrganization.currentText()
 
         dlg = OrganizationEditorDialog()
-        dlg.exec_()
+        dlg.exec()
 
         self.orgsTemplateManager.reloadTemplates()
         self.updateOrgsTemplatesList()

@@ -25,10 +25,10 @@
 #
 # ******************************************************************************
 
-from PyQt4 import uic
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from PyQt4.QtXml import *
+from qgis.PyQt import uic
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtGui import *
+from qgis.PyQt.QtXml import *
 
 from qgis.core import *
 from qgis.gui import *
