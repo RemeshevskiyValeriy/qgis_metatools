@@ -28,6 +28,6 @@
 
 
 def classFactory(iface):
-    from metatools import MetatoolsPlugin
+    from .metatools import MetatoolsPlugin
 
     return MetatoolsPlugin(iface)

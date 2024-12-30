@@ -37,7 +37,7 @@ from metatoolssettings import MetatoolsSettings
 from standard import MetaInfoStandard
 from error_handler import ErrorHandler
 from metadata_provider import MetadataProvider
-import resources_rc
+import resources_rc # noqa: F401
 
 minQtVersion = "4.6.0"
 currentPath = os.path.abspath(os.path.dirname(__file__))

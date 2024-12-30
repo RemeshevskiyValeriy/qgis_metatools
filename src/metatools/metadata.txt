@@ -4,12 +4,13 @@ description=Metadata browser/editor
 about=Browse and edit metadata for geospatial data.
 category=Plugins
 version=0.3.1
-qgisMinimumVersion=2.0
+qgisMinimumVersion=3.22
+qgisMaximumVersion=3.99
 
 author=NextGIS
 email=info@nextgis.com
 
-icon=icons/metafile.png
+icon=icons/metatools.png
 
 tags=raster,vector,metadata
 
