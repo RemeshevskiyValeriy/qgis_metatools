@@ -25,20 +25,20 @@
 #
 # ******************************************************************************
 
-from qgis.PyQt import uic
-from qgis.PyQt.QtCore import *
-from qgis.PyQt.QtGui import *
-from qgis.PyQt.QtXml import *
-from qgis.PyQt.QtXmlPatterns import *
+import os
+import sys
 
 from qgis.core import *
 from qgis.gui import *
-
-import os, sys
+from qgis.PyQt import uic
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtGui import *
+from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox
+from qgis.PyQt.QtXml import *
 
 from .workflow_template_manager import (
-    WorkflowTemplateManager,
     WorkflowTemplate,
+    WorkflowTemplateManager,
 )
 
 FORM_CLASS, _ = uic.loadUiType(

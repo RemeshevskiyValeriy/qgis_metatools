@@ -69,7 +69,7 @@ def mdPathFromLayerPath(layerPath):
 
 
 def getSupportedLayerNames():
-    layermap = QgsMapLayerRegistry.instance().mapLayers()
+    layermap = QgsProject.instance().mapLayers()
     layerList = []
     for name, layer in layermap.items():
         if MetadataProvider.IsLayerSupport(layer)[0]:
@@ -78,7 +78,7 @@ def getSupportedLayerNames():
 
 
 def getSupportedLayers():
-    layermap = QgsMapLayerRegistry.instance().mapLayers()
+    layermap = QgsProject.instance().mapLayers()
     layers = []
     for name, layer in layermap.items():
         if MetadataProvider.IsLayerSupport(layer)[0]:
@@ -87,7 +87,7 @@ def getSupportedLayers():
 
 
 def getRasterLayerByName(layerName):
-    layermap = QgsMapLayerRegistry.instance().mapLayers()
+    layermap = QgsProject.instance().mapLayers()
     for name, layer in layermap.items():
         if layer.type() == QgsMapLayer.RasterLayer:
             if layer.providerType() != "gdal":
@@ -98,7 +98,7 @@ def getRasterLayerByName(layerName):
 
 
 def getRasterLayerByPath(layerPath):
-    layermap = QgsMapLayerRegistry.instance().mapLayers()
+    layermap = QgsProject.instance().mapLayers()
     for name, layer in layermap.items():
         if layer.type() == QgsMapLayer.RasterLayer:
             if layer.providerType() != "gdal":

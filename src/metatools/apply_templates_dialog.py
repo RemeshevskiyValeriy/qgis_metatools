@@ -25,45 +25,50 @@
 #
 # ******************************************************************************
 
-from qgis.PyQt import uic
-from qgis.PyQt.QtCore import *
-from qgis.PyQt.QtGui import *
-from qgis.PyQt.QtXml import *
-from qgis.PyQt.QtXmlPatterns import *
+import codecs
+import os
+import shutil
+import sys
 
 from qgis.core import *
 from qgis.gui import *
-
-import sys, os, codecs, shutil
-
-from .license_editor_dialog import LicenseEditorDialog
-from .license_template_manager import LicenseTemplateManager
-
-from .workflow_editor_dialog import WorkflowEditorDialog
-from .workflow_template_manager import WorkflowTemplateManager
-
-from .organization_editor_dialog import OrganizationEditorDialog
-from .organization_template_manager import OrganizationTemplateManager
+from qgis.PyQt import uic
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtGui import *
+from qgis.PyQt.QtWidgets import (
+    QAbstractItemView,
+    QDialog,
+    QDialogButtonBox,
+    QFileDialog,
+    QListWidgetItem,
+    QMessageBox,
+    QPushButton,
+)
+from qgis.PyQt.QtXml import *
 
 from .datatype_editor_dialog import DataTypeEditorDialog
 from .datatype_template_manager import DatatypeTemplateManager
-
-import os
+from .license_editor_dialog import LicenseEditorDialog
+from .license_template_manager import LicenseTemplateManager
+from .organization_editor_dialog import OrganizationEditorDialog
+from .organization_template_manager import OrganizationTemplateManager
+from .workflow_editor_dialog import WorkflowEditorDialog
+from .workflow_template_manager import WorkflowTemplateManager
 
 FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "ui/apply_templates.ui")
 )
 
-from .standard import MetaInfoStandard
-from .metadata_provider import FileMetadataProvider
 from . import utils
+from .metadata_provider import FileMetadataProvider
+from .standard import MetaInfoStandard
 
 currentPath = os.path.abspath(os.path.dirname(__file__))
 
 
 class ApplyTemplatesDialog(QDialog, FORM_CLASS):
     def __init__(self, iface, parent=None):
-        super(ApplyTemplatesDialog, self).__init__(parent)
+        super().__init__(parent)
         self.setupUi(self)
         self.iface = iface
 
@@ -150,7 +155,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
             return
 
         self.layers = files
-        self.lstLayers.addItems(files)
+        self.lstLayers.addItems(files[0])
         self.btnApply.setEnabled(True)
 
     def manageLicenses(self):
@@ -215,8 +220,8 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
             self.tr("Text files (*.txt);;Log files (*.log);;All files (*)"),
             options=QFileDialog.ReadOnly,
         )
-        self.leLogFile.setText(logFileName)
-        self.leLogFile.setToolTip(logFileName)
+        self.leLogFile.setText(logFileName[0])
+        self.leLogFile.setToolTip(logFileName[0])
 
     def updateLicenseTemplatesList(self):
         self.cmbLicense.clear()

@@ -27,6 +27,7 @@
 
 from qgis.PyQt.QtCore import *
 from qgis.PyQt.QtGui import *
+from qgis.PyQt.QtWidgets import QMessageBox
 
 from qgis.core import *
 from qgis.gui import *
@@ -686,7 +687,7 @@ class MetatoolsPlugin:
             )
             return
 
-        from qgis.PyQt.QtXmlPatterns import QXmlSchema, QXmlSchemaValidator
+        # from qgis.PyQt.QtXmlPatterns import QXmlSchema, QXmlSchemaValidator
         # TODO: validate metadata file
 
         # setup xml schema
