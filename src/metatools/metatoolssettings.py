@@ -32,7 +32,7 @@ from qgis.gui import *
 from qgis.PyQt import uic
 from qgis.PyQt.QtCore import *
 from qgis.PyQt.QtGui import *
-from qgis.PyQt.QtWidgets import QDialog
+from qgis.PyQt.QtWidgets import QDialog, QFileDialog
 
 FORM_CLASS, _ = uic.loadUiType(
     os.path.join(os.path.dirname(__file__), "ui/settings.ui")
@@ -46,7 +46,7 @@ class MetatoolsSettings(QDialog, FORM_CLASS):
         super(MetatoolsSettings, self).__init__(parent)
         self.setupUi(self)
 
-        self.settings = QSettings("NextGIS", "metatools")
+        self.settings = QgsSettings("NextGIS", "metatools")
         self.gbFGDCTools.setSettings(self.settings)
 
         self.manageGui()
@@ -63,9 +63,7 @@ class MetatoolsSettings(QDialog, FORM_CLASS):
         profilesDir = QDir(
             QDir.toNativeSeparators(os.path.join(currentPath, "xml_profiles"))
         )
-        profilesDir.setFilter(
-            QDir.Files | QDir.NoSymLinks | QDir.NoDotAndDotDot
-        )
+        profilesDir.setFilter(QDir.Files | QDir.NoDotAndDotDot)
         fileFilter = ["*.xml", "*.XML"]
         profilesDir.setNameFilters(fileFilter)
         profiles = profilesDir.entryList()
@@ -75,7 +73,7 @@ class MetatoolsSettings(QDialog, FORM_CLASS):
         xslDir = QDir(
             QDir.toNativeSeparators(os.path.join(currentPath, "xsl"))
         )
-        xslDir.setFilter(QDir.Files | QDir.NoSymLinks | QDir.NoDotAndDotDot)
+        xslDir.setFilter(QDir.Files | QDir.NoDotAndDotDot)
         fileFilter = ["*.xsl", "*.XSL"]
         xslDir.setNameFilters(fileFilter)
         xsls = xslDir.entryList()
@@ -131,7 +129,7 @@ class MetatoolsSettings(QDialog, FORM_CLASS):
         if fileName == "":
             return
 
-        self.leFilterFileName.setText(fileName)
+        self.leFilterFileName.setText(fileName[0])
 
     def selectTkme(self):
         fileName = QFileDialog.getOpenFileName(
@@ -144,7 +142,7 @@ class MetatoolsSettings(QDialog, FORM_CLASS):
         if fileName == "":
             return
 
-        self.leTkmePath.setText(fileName)
+        self.leTkmePath.setText(fileName[0])
 
     def selectMp(self):
         fileName = QFileDialog.getOpenFileName(
@@ -157,7 +155,7 @@ class MetatoolsSettings(QDialog, FORM_CLASS):
         if fileName == "":
             return
 
-        self.leMpPath.setText(fileName)
+        self.leMpPath.setText(fileName[0])
 
     def selectErr2Html(self):
         fileName = QFileDialog.getOpenFileName(
@@ -170,7 +168,7 @@ class MetatoolsSettings(QDialog, FORM_CLASS):
         if fileName == "":
             return
 
-        self.leErr2HtmlPath.setText(fileName)
+        self.leErr2HtmlPath.setText(fileName[0])
 
     def accept(self):
         # save settings
