@@ -24,11 +24,12 @@
 # MA 02111-1307, USA.
 #
 # ******************************************************************************
-from qgis.core import *
-from os import path, remove
-import tempfile
 import codecs
+import tempfile
 import uuid
+from os import path, remove
+
+from qgis.core import *
 
 NO_PSYCOPG2 = False
 try:

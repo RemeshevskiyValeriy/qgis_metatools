@@ -25,15 +25,17 @@
 #
 # ******************************************************************************
 
-from qgis.PyQt import uic
-from qgis.PyQt.QtCore import *
-from qgis.PyQt.QtGui import *
-from qgis.PyQt.QtXml import *
+import os
+import sys
 
 from qgis.core import *
 from qgis.gui import *
+from qgis.PyQt import uic
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtGui import *
+from qgis.PyQt.QtWidgets import QDialog
+from qgis.PyQt.QtXml import *
 
-import os, sys
 from .dom_model import DomModel, FilterDomModel
 
 FORM_CLASS, _ = uic.loadUiType(

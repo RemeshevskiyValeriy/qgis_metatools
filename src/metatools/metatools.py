@@ -25,20 +25,21 @@
 #
 # ******************************************************************************
 
-from qgis.PyQt.QtCore import *
-from qgis.PyQt.QtGui import *
-from qgis.PyQt.QtWidgets import QMessageBox
+import os
+import sys
+import tempfile
 
 from qgis.core import *
 from qgis.gui import *
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtGui import *
+from qgis.PyQt.QtWidgets import QFileDialog, QMessageBox
 
-import os, sys
-
-from .metatoolssettings import MetatoolsSettings
-from .standard import MetaInfoStandard
+from . import resources_rc  # noqa: F401
 from .error_handler import ErrorHandler
 from .metadata_provider import MetadataProvider
-from . import resources_rc  # noqa: F401
+from .metatoolssettings import MetatoolsSettings
+from .standard import MetaInfoStandard
 
 minQtVersion = "4.6.0"
 currentPath = os.path.abspath(os.path.dirname(__file__))
@@ -491,11 +492,11 @@ class MetatoolsPlugin:
                     "Metatools",
                     "The layer does not have metadata! Create metadata?",
                 ),
-                QDialogButtonBox.Yes,
-                QDialogButtonBox.No,
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.Yes,
             )
 
-            if result == QDialogButtonBox.Yes:
+            if result == QMessageBox.Yes:
                 try:
                     settings = QSettings("NextGIS", "metatools")
                     profile = settings.value("general/defaultProfile", "")
@@ -609,7 +610,8 @@ class MetatoolsPlugin:
         mpFilePath = settings.value("tools/mp", "")
         errFilePath = settings.value("tools/err2html", "")
 
-        tempPath = os.tempnam()
+        with tempfile.NamedTemporaryFile() as temp_file:
+            tempPath = temp_file.name
         temporaryMetafile = self.metaProvider.SaveToTempFile()
         result = ""
 
@@ -735,7 +737,7 @@ class MetatoolsPlugin:
         if not self.checkMetadata():
             return
 
-        fileName = QFileDialog.getOpenFileName(
+        fileName, _ = QFileDialog.getOpenFileName(
             self.iface.mainWindow(),
             QCoreApplication.translate("Metatools", "Select metadata file"),
             "",
@@ -749,7 +751,7 @@ class MetatoolsPlugin:
             return
 
         try:
-            self.metaProvider.ImportFromFile(str(fileName))
+            self.metaProvider.ImportFromFile(fileName)
         except:
             QMessageBox.critical(
                 self.iface.mainWindow(),
@@ -774,7 +776,7 @@ class MetatoolsPlugin:
         if not self.checkMetadata():
             return
 
-        fileName = QFileDialog.getSaveFileName(
+        fileName, _ = QFileDialog.getSaveFileName(
             self.iface.mainWindow(),
             QCoreApplication.translate("Metatools", "Save metadata to file"),
             "",
@@ -788,7 +790,7 @@ class MetatoolsPlugin:
             return
 
         try:
-            self.metaProvider.ExportToFile(str(fileName))
+            self.metaProvider.ExportToFile(fileName)
         except:
             QMessageBox.critical(
                 self.iface.mainWindow(),
