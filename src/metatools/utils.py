@@ -25,16 +25,14 @@
 #
 # ******************************************************************************
 
-from qgis.PyQt.QtCore import *
-from qgis.PyQt.QtGui import *
-from qgis.PyQt.QtXml import *
-
-from qgis.core import *
-from qgis.gui import *
-
 import os
 
 from osgeo import gdal, ogr, osr
+from qgis.core import *
+from qgis.gui import *
+from qgis.PyQt.QtCore import *
+from qgis.PyQt.QtGui import *
+from qgis.PyQt.QtXml import *
 
 from .metadata_provider import MetadataProvider
 
@@ -52,7 +50,7 @@ def getMetafilePath(layer):
 
 
 def previewPathFromLayerPath(layerPath):
-    settings = QSettings("NextGIS", "metatools")
+    settings = QgsSettings()
     format_preview = settings.value("preview/format", "jpg")
 
     originalFileName = os.path.splitext(str(layerPath))

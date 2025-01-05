@@ -269,7 +269,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
         # TODO: check if there are some templates selected
 
         # get profile from settings
-        settings = QSettings("NextGIS", "metatools")
+        settings = QgsSettings()
         profile = settings.value("general/defaultProfile", "")
         if profile == "":
             QMessageBox.warning(
@@ -856,7 +856,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
         textNode.setNodeValue(logFileContent)
 
     def __loadSettings(self):
-        settings = QSettings("NextGIS", "metatools")
+        settings = QgsSettings()
 
         self.chkUpdateImageInfo.setCheckState(
             int(settings.value("templates/extractLayerInfo", 0))
@@ -866,7 +866,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
         )
 
     def __saveSettings(self):
-        settings = QSettings("NextGIS", "metatools")
+        settings = QgsSettings()
 
         settings.setValue(
             "templates/extractLayerInfo", self.chkUpdateImageInfo.checkState()

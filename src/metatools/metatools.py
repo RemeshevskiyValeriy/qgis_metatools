@@ -240,7 +240,7 @@ class MetatoolsPlugin:
             QCoreApplication.translate("Metatools", "MP Tool")
         )
 
-        settings = QSettings("NextGIS", "metatools")
+        settings = QgsSettings()
         hasTools = settings.value(
             "QgsCollapsibleGroupBox/gbFGDCTools/checked", False
         )
@@ -353,7 +353,7 @@ class MetatoolsPlugin:
         self.exportAction.setEnabled(False)
 
     def enableLayerActions(self):
-        settings = QSettings("NextGIS", "metatools")
+        settings = QgsSettings()
         hasTools = settings.value("tools/hasFGDC", False)
 
         self.viewAction.setEnabled(True)
@@ -410,7 +410,7 @@ class MetatoolsPlugin:
         dlg = MetatoolsSettings()
         dlg.exec()
 
-        settings = QSettings("NextGIS", "metatools")
+        settings = QgsSettings()
         hasTools = settings.value("tools/hasFGDC", False)
         if hasTools:
             self.usgsAction.setEnabled(settings.value("tools/tkme", "") != "")
@@ -498,7 +498,7 @@ class MetatoolsPlugin:
 
             if result == QMessageBox.Yes:
                 try:
-                    settings = QSettings("NextGIS", "metatools")
+                    settings = QgsSettings()
                     profile = settings.value("general/defaultProfile", "")
                     if profile == "":
                         QMessageBox.warning(
@@ -540,7 +540,7 @@ class MetatoolsPlugin:
     # ----------------- external tools -----------------
 
     def execUsgs(self):
-        settings = QSettings("NextGIS", "metatools")
+        settings = QgsSettings()
         if not settings.value("tools/hasFGDC", False):
             return
 
@@ -585,7 +585,7 @@ class MetatoolsPlugin:
             )
 
     def execMp(self):
-        settings = QSettings("NextGIS", "metatools")
+        settings = QgsSettings()
         if not settings.value("tools/hasFGDC", False):
             return
 

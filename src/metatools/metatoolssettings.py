@@ -46,7 +46,7 @@ class MetatoolsSettings(QDialog, FORM_CLASS):
         super(MetatoolsSettings, self).__init__(parent)
         self.setupUi(self)
 
-        self.settings = QgsSettings("NextGIS", "metatools")
+        self.settings = QgsSettings()
         self.gbFGDCTools.setSettings(self.settings)
 
         self.manageGui()

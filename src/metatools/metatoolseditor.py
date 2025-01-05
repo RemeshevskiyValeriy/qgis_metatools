@@ -238,7 +238,7 @@ class MetatoolsEditor(QDialog, FORM_CLASS):
             )
 
     def loadFilter(self):
-        settings = QSettings("NextGIS", "metatools")
+        settings = QgsSettings()
         fileName = settings.value("general/filterFile", "")
 
         if fileName == "":
