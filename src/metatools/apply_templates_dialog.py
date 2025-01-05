@@ -319,7 +319,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
                         )
                         % (layer),
                     )
-                    continue
+                    return
 
                 if os.path.splitext(str(layer))[1].lower() not in (
                     ".shp",
@@ -351,7 +351,7 @@ class ApplyTemplatesDialog(QDialog, FORM_CLASS):
 
                 # save metadata file (hmm.. why not QFile?)
                 metafile = codecs.open(metaFilePath, "w", encoding="utf-8")
-                metafile.write(str(metaXML, "utf-8"))
+                metafile.write(metaXML.toString())
                 metafile.close()
 
             QMessageBox.information(

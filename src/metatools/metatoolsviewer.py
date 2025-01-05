@@ -27,12 +27,13 @@
 
 import os
 
+from lxml import etree
 from qgis.core import *
 from qgis.gui import *
 from qgis.PyQt import uic
 from qgis.PyQt.QtCore import *
 from qgis.PyQt.QtGui import *
-from qgis.PyQt.QtWidgets import QDialog
+from qgis.PyQt.QtWidgets import QDialog, QMenu
 from qgis.PyQt.QtXml import *
 
 FORM_CLASS, _ = uic.loadUiType(
@@ -52,9 +53,9 @@ class MetatoolsViewer(QDialog, FORM_CLASS):
         self.webView.setContextMenuPolicy(Qt.CustomContextMenu)
         self.webView.customContextMenuRequested.connect(self.openMenu)
         self.contextMenu = QMenu()
-        self.actionCopy.activated.connect(self.slotCopy)
-        self.actionPrint.activated.connect(self.slotPrint)
-        self.actionCopyAll.activated.connect(self.slotCopyAll)
+        self.actionCopy.triggered.connect(self.slotCopy)
+        self.actionPrint.triggered.connect(self.slotPrint)
+        self.actionCopyAll.triggered.connect(self.slotCopyAll)
 
     def openMenu(self, position):
         self.contextMenu.clear()
@@ -86,30 +87,22 @@ class MetatoolsViewer(QDialog, FORM_CLASS):
 
     def setContent(self, metaProvider, xsltFilePath):
         # load data
-        xsltFile = QFile(xsltFilePath)
-        xsltFile.open(QIODevice.ReadOnly)
-        xslt = str(xsltFile.readAll())
-        xsltFile.close()
+        with open(xsltFilePath) as xslt_file:
+            xslt_content = xslt_file.read()
 
-        src = metaProvider.getMetadata()
+        # Parse XSLT
+        xslt_tree = etree.XML(xslt_content.encode("utf-8"))
+        transform = etree.XSLT(xslt_tree)
 
-        # translate
-        qry = QXmlQuery(QXmlQuery.XSLT20)
+        # Load source XML from metaProvider
+        src_xml = metaProvider.getMetadata()
+        src_tree = etree.XML(src_xml.encode("utf-8"))
 
-        self.handler = ErrorHandler(self.tr("Translation error"))
-        qry.setMessageHandler(self.handler)
+        # Apply transformation
+        result_tree = transform(src_tree)
 
-        qry.setFocus(src)
-        qry.setQuery(xslt)
-
-        result = qry.evaluateToString()
-
-        # workaround, for PyQt < 4.8
-        # array = ""
-        # buf = QBuffer(array)
-        # buf.open(QIODevice.WriteOnly)
-        # qry.evaluateTo(buf)
-        # result = unicode(array)
+        # Convert result to string
+        result = str(result_tree)
 
         if result:
             # QXmlPattern not support CDATA section

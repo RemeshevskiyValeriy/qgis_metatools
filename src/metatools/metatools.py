@@ -469,7 +469,7 @@ class MetatoolsPlugin:
         # TODO: validate metadata file
 
         # get xsl file path
-        settings = QSettings("NextGIS", "metatools")
+        settings = QgsSettings()
         if standard == MetaInfoStandard.ISO19115:
             xsltFilePath = os.path.join(
                 self.pluginPath, "xsl/"
