@@ -33,7 +33,13 @@ from qgis.gui import *
 from qgis.PyQt import uic
 from qgis.PyQt.QtCore import *
 from qgis.PyQt.QtGui import *
-from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox
+from qgis.PyQt.QtWidgets import (
+    QDialog,
+    QDialogButtonBox,
+    QInputDialog,
+    QLineEdit,
+    QMessageBox,
+)
 from qgis.PyQt.QtXml import *
 
 FORM_CLASS, _ = uic.loadUiType(
