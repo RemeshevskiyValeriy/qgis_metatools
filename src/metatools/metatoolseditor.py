@@ -33,7 +33,12 @@ from qgis.gui import *
 from qgis.PyQt import uic
 from qgis.PyQt.QtCore import *
 from qgis.PyQt.QtGui import *
-from qgis.PyQt.QtWidgets import QDialog
+from qgis.PyQt.QtWidgets import (
+    QDialog,
+    QDialogButtonBox,
+    QMessageBox,
+    QPushButton,
+)
 from qgis.PyQt.QtXml import *
 
 from .dom_model import DomModel, FilterDomModel
@@ -68,9 +73,7 @@ class MetatoolsEditor(QDialog, FORM_CLASS):
         # contextmenu
         self.lblNodePath.setContextMenuPolicy(Qt.ActionsContextMenu)
         self.lblNodePath.addAction(self.actionCopyPath)
-        self.connect(
-            self.actionCopyPath, SIGNAL("activated()"), self.slotCopyPath
-        )
+        self.actionCopyPath.triggered.connect(self.slotCopyPath)
 
         # full metadata view
         self.treeFull.clicked.connect(self.itemSelected)

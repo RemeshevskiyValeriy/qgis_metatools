@@ -186,13 +186,7 @@ class DomModel(QAbstractItemModel):
             # node = item.node() ?not used never
             item.setItemValue(value)
 
-            self.emit(
-                SIGNAL(
-                    "dataChanged(const QModelIndex &, const QModelIndex &)"
-                ),
-                index,
-                index,
-            )
+            self.dataChanged.emit(index, index)
             return True
         return False
 
