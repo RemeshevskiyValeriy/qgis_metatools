@@ -29,6 +29,7 @@ import os
 import sys
 import tempfile
 
+from lxml import etree
 from qgis.core import *
 from qgis.gui import *
 from qgis.PyQt.QtCore import *
@@ -689,45 +690,39 @@ class MetatoolsPlugin:
             )
             return
 
-        # from qgis.PyQt.QtXmlPatterns import QXmlSchema, QXmlSchemaValidator
-        # TODO: validate metadata file
-
-        # setup xml schema
-        schema = QXmlSchema()
-
-        # setup handler
-        self.handler = ErrorHandler(
-            QCoreApplication.translate("Metatools", "Metadata is invalid")
-        )
-        schema.setMessageHandler(self.handler)
-
         # load schema from file
         xsdFilePath = self.pluginPath + "/xsd/fgdc/fgdc-std-001-1998.xsd"
-        # if standard != MetaInfoStandard.FGDC:
-        #    xsdFilePath = 'c:/xsd/gml/basicTypes.xsd' #   gmd/gmd.xsd'
-        schemaUrl = QUrl(xsdFilePath)
-        loadResult = schema.load(schemaUrl)
-        if not loadResult or self.handler.errorOccured:
-            QMessageBox.critical(
-                self.iface.mainWindow(),
-                QCoreApplication.translate("Metatools", "Metatools"),
-                QCoreApplication.translate(
-                    "Metatools", "Schema for validate not loaded!"
-                ),
-            )
-            return
+        schemas_path = self.pluginPath + "/xsd/fgdc/"
 
-        # setup validator
-        validator = QXmlSchemaValidator(schema)
-        validator.setMessageHandler(self.handler)
+        try:
+            with open(xsdFilePath, "rb") as schema_file:
+                schema_root = etree.XML(
+                    schema_file.read(), base_url=schemas_path
+                )
+                schema = etree.XMLSchema(schema_root)
 
-        # validate
-        metadata = self.metaProvider.getMetadata().encode("utf-8")
-        if validator.validate(metadata):
+            metadata = self.metaProvider.getMetadata().encode("utf-8")
+
+            parser = etree.XMLParser(schema=schema)
+            etree.fromstring(metadata, parser)
+
             QMessageBox.information(
                 self.iface.mainWindow(),
                 QCoreApplication.translate("Metatools", "Metatools"),
                 QCoreApplication.translate("Metatools", "Metadata is valid!"),
+            )
+        except (
+            etree.XMLSchemaError,
+            etree.XMLSyntaxError,
+            etree.DocumentInvalid,
+        ) as err:
+            QMessageBox.critical(
+                self.iface.mainWindow(),
+                QCoreApplication.translate("Metatools", "Metatools"),
+                QCoreApplication.translate(
+                    "Metatools",
+                    f"Metadata is invalid: {str(err)}",
+                ),
             )
 
     # ----------------- import\ export -----------------
