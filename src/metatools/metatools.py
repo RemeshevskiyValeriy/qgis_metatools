@@ -38,7 +38,7 @@ from qgis.PyQt.QtGui import *
 from qgis.PyQt.QtWidgets import QAction, QFileDialog, QMessageBox
 
 from . import resources_rc  # noqa: F401
-from .error_handler import ErrorHandler
+from .about_dialog import AboutDialog
 from .metadata_provider import MetadataProvider
 from .metatoolssettings import MetatoolsSettings
 from .standard import MetaInfoStandard
@@ -242,6 +242,12 @@ class MetatoolsPlugin:
             QCoreApplication.translate("Metatools", "MP Tool")
         )
 
+        self.__action_about = QAction(
+            QgsApplication.getThemeIcon("mActionPropertiesWidget.svg"),
+            QCoreApplication.translate("Metatools", "About plugin…"),
+            self.iface.mainWindow(),
+        )
+
         settings = QgsSettings()
         hasTools = settings.value(
             "QgsCollapsibleGroupBox/gbFGDCTools/checked", False
@@ -259,6 +265,7 @@ class MetatoolsPlugin:
         self.mpAction.triggered.connect(self.execMp)
         self.importAction.triggered.connect(self.doImport)
         self.exportAction.triggered.connect(self.doExport)
+        self.__action_about.triggered.connect(self.__open_about)
 
         # add menu items
         self.iface.addPluginToMenu("Metatools", self.usgsAction)
@@ -270,6 +277,7 @@ class MetatoolsPlugin:
         self.iface.addPluginToMenu("Metatools", self.validateAction)
         self.iface.addPluginToMenu("Metatools", self.applyTemplatesAction)
         self.iface.addPluginToMenu("Metatools", self.configAction)
+        self.iface.addPluginToMenu("Metatools", self.__action_about)
 
         # add toolbar and buttons
         self.toolBar = self.iface.addToolBar(
@@ -327,6 +335,7 @@ class MetatoolsPlugin:
         self.iface.removePluginMenu("Metatools", self.mpAction)
         self.iface.removePluginMenu("Metatools", self.importAction)
         self.iface.removePluginMenu("Metatools", self.exportAction)
+        self.iface.removePluginMenu("Metatools", self.__action_about)
 
         del self.toolBar
         del self.fgdcToolBar
@@ -808,3 +817,7 @@ class MetatoolsPlugin:
                 "Metatools", "Metadata was exported successful!"
             ),
         )
+
+    def __open_about(self) -> None:
+        dialog = AboutDialog(str(Path(__file__).parent.name))
+        dialog.exec()

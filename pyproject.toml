@@ -6,7 +6,7 @@ license = { file = "LICENSE" }
 
 
 [tool.qgspb.package-data]
-"metatools.icons" = ["metatools.png"]
+"metatools.icons" = ["metatools.png", "logo.svg"]
 "metatools.icons.svg" = ["*.svg"]
 "metatools.postgresql_ext" = ["extension.sql"]
 "metatools.templates" = ["**/init"]

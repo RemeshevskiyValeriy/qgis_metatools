@@ -11,5 +11,6 @@
     <file>icons/usgs_check.png</file>
     <file>icons/import.png</file>
     <file>icons/export.png</file>
+    <file>icons/logo.svg</file>
   </qresource>
 </RCC>

@@ -1,7 +1,9 @@
 [general]
 name=Metatools
 description=Metadata browser/editor
+description[ru]=Браузер/редактор метаданных
 about=Browse and edit metadata for geospatial data.
+about[ru]=Просматривайте и редактируйте метаданные геопространственных данных.
 category=Plugins
 version=0.3.1
 qgisMinimumVersion=3.22
