@@ -30,6 +30,7 @@ import uuid
 from os import path, remove
 
 from qgis.core import *
+from qgis.PyQt.QtWidgets import QMessageBox
 
 NO_PSYCOPG2 = False
 try:
@@ -82,9 +83,20 @@ class MetadataProvider:
 
     def ImportFromFile(self, inputFilePath):
         # read metadata from file
-        metaFile = codecs.open(inputFilePath, "r", encoding="utf-8")
-        content = metaFile.read()
-        metaFile.close()
+        try:
+            metaFile = codecs.open(inputFilePath, "r", encoding="utf-8")
+            content = metaFile.read()
+            metaFile.close()
+        except OSError:
+            QMessageBox.warning(
+                None,
+                "Metatools",
+                QCoreApplication.translate(
+                    "Metatools", f"Unable to handle file: {inputFilePath}"
+                ),
+            )
+            return
+
         # save to provider
         self.setMetadata(content)
 
@@ -175,9 +187,20 @@ class FileMetadataProvider(MetadataProvider):
 
     def getMetadata(self):
         # read metadata from file
-        metaFile = codecs.open(self.metaFilePath, "r", encoding="utf-8")
-        content = metaFile.read()
-        metaFile.close()
+        try:
+            metaFile = codecs.open(self.metaFilePath, "r", encoding="utf-8")
+            content = metaFile.read()
+            metaFile.close()
+        except OSError:
+            QMessageBox.warning(
+                None,
+                "Metatools",
+                QCoreApplication.translate(
+                    "Metatools", f"Unable to handle file: {self.metaFilePath}"
+                ),
+            )
+            return
+
         return content
 
     def setMetadata(self, metadata):
