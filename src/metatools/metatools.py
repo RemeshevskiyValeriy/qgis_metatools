@@ -28,13 +28,14 @@
 import os
 import sys
 import tempfile
+from pathlib import Path
 
 from lxml import etree
 from qgis.core import *
 from qgis.gui import *
 from qgis.PyQt.QtCore import *
 from qgis.PyQt.QtGui import *
-from qgis.PyQt.QtWidgets import QFileDialog, QMessageBox
+from qgis.PyQt.QtWidgets import QAction, QFileDialog, QMessageBox
 
 from . import resources_rc  # noqa: F401
 from .error_handler import ErrorHandler
@@ -570,6 +571,7 @@ class MetatoolsPlugin:
 
             prov = self.metaProvider
             temporaryMetafile = prov.SaveToTempFile()
+            toolPath = Path(execFilePath).parent
             subprocess.Popen(
                 [str(execFilePath), str(temporaryMetafile)],
                 cwd=toolPath,
@@ -619,23 +621,25 @@ class MetatoolsPlugin:
         try:
             import subprocess
 
+            mpToolPath = Path(mpFilePath).parent
+            errToolPath = Path(errFilePath).parent
             subprocess.check_call(
                 [mpFilePath, "-e", tempPath, temporaryMetafile],
-                shell=throwShell,
-                cwd=toolPath,
+                shell=False,
+                cwd=mpToolPath,
             )
 
             if sys.hexversion >= 34013184:
                 result = subprocess.check_output(
-                    [errFilePath, tempPath], shell=throwShell, cwd=toolPath
+                    [errFilePath, tempPath], shell=False, cwd=errToolPath
                 )
             else:
                 # workaround for python < 2.7
                 # ... stderr=subprocess.STDOUT, stdin=subprocess.PIPE ... ! FUCKED Python 2.5 bug on windows!
                 err2htmlProc = subprocess.Popen(
                     [errFilePath, tempPath],
-                    shell=throwShell,
-                    cwd=toolPath,
+                    shell=False,
+                    cwd=errToolPath,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT,
                     stdin=subprocess.PIPE,
@@ -664,7 +668,7 @@ class MetatoolsPlugin:
         from .metatoolsviewer import MetatoolsViewer
 
         dlg = MetatoolsViewer()
-        dlg.setHtml(result)
+        dlg.setHtml(result.decode("utf-8"))
         dlg.setWindowTitle(
             QCoreApplication.translate("Metatools", "MP result")
         )
