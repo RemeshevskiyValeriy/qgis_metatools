@@ -2,6 +2,111 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="fr_FR">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="../about_dialog.py" line="77"/>
+        <source> by NextGIS</source>
+        <translation> par NextGIS</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="214"/>
+        <source>REPORT_END</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="219"/>
+        <source>Developers</source>
+        <translation>Développeurs</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="220"/>
+        <source>Homepage</source>
+        <translation>Page d&apos;accueil</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="221"/>
+        <source>Please report bugs at</source>
+        <translation>Veuillez signaler les bogues à</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="223"/>
+        <source>bugtracker</source>
+        <translation>traqueur de bogues</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="224"/>
+        <source>Video with an overview of the plugin</source>
+        <translation>Vidéo avec un aperçu du plugin</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="225"/>
+        <source>Other helpful services by NextGIS</source>
+        <translation>Autres services utiles de NextGIS</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="226"/>
+        <source>Convenient up-to-date data extracts for any place in the world</source>
+        <translation>Des extraits de données pratiques et actualisés pour tous lieux dans le monde</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="229"/>
+        <source>Fully featured Web GIS service</source>
+        <translation>Service SIG Web entièrement équipé</translation>
+    </message>
+</context>
+<context>
+    <name>AboutDialogBase</name>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="14"/>
+        <source>About {plugin_name}</source>
+        <translation>À propos du {plugin_name}</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="33"/>
+        <source>Information</source>
+        <translation>Information</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="54"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="72"/>
+        <source>License</source>
+        <translation>License</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="94"/>
+        <source>Components</source>
+        <translation>Composants</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="116"/>
+        <source>Contributors</source>
+        <translation>Contributeurs</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="158"/>
+        <source>{plugin_name}</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="168"/>
+        <source>Version {version}</source>
+        <translation>Version {version}</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="203"/>
+        <source>Get involved</source>
+        <translation>S&apos;impliquer</translation>
+    </message>
+</context>
+<context>
     <name>ApplyTemplatesDialog</name>
     <message>
         <location filename="../apply_templates_dialog.py" line="87"/>
@@ -131,7 +236,7 @@
     <message>
         <location filename="../apply_templates_dialog.py" line="314"/>
         <source>File %s has unsupported metadata standard! Only ISO19115 supported now!</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier %s possède une norme de métadonnées non prise en charge! Seule la norme ISO19115 est désormais prise en charge!</translation>
     </message>
 </context>
 <context>
@@ -214,7 +319,7 @@
     <message>
         <location filename="../datatype_editor_dialog.py" line="177"/>
         <source>Template can&apos;t be saved: </source>
-        <translation>Le modèle ne peut être sauvegardé :</translation>
+        <translation>Le modèle ne peut être sauvegardé: </translation>
     </message>
     <message>
         <location filename="../datatype_editor_dialog.py" line="195"/>
@@ -409,14 +514,14 @@
         <translation>Configurer le plugin</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="804"/>
+        <location filename="../metatools.py" line="813"/>
         <source>Metatools</source>
         <translation>Metatools</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="527"/>
+        <location filename="../metatools.py" line="536"/>
         <source>Metadata file can&apos;t be created: </source>
-        <translation>Le fichier de métadonnées peut pas être créé :</translation>
+        <translation>Le fichier de métadonnées peut pas être créé: </translation>
     </message>
     <message>
         <location filename="../apply_templates_dialog.py" line="77"/>
@@ -464,67 +569,67 @@
         <translation>Outil MP</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="296"/>
+        <location filename="../metatools.py" line="304"/>
         <source>Metatools: FGDC tools</source>
         <translation>Metatools : Outils FGDC</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="557"/>
+        <location filename="../metatools.py" line="566"/>
         <source>USGS tool support only FGDC standard!</source>
         <translation>L&apos;outil de l&apos;USGS ne supporte que la norme du FGDC!</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="581"/>
+        <location filename="../metatools.py" line="590"/>
         <source>USGS tool can&apos;t be runing: </source>
-        <translation>Outil de l&apos;USGS ne peut pas s&apos;exécuter :</translation>
+        <translation>Outil de l&apos;USGS ne peut pas s&apos;exécuter: </translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="603"/>
+        <location filename="../metatools.py" line="612"/>
         <source>MP tool support only FGDC standard!</source>
         <translation>L&apos;outil MP ne supporte que la norme du FGDC!</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="651"/>
+        <location filename="../metatools.py" line="660"/>
         <source>MP tool can&apos;t be runing: </source>
-        <translation>Outil MP ne peut pas s&apos;exécuter :</translation>
+        <translation>Outil MP ne peut pas s&apos;exécuter: </translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="672"/>
+        <location filename="../metatools.py" line="681"/>
         <source>MP result</source>
         <translation>Résultats MP</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="713"/>
+        <location filename="../metatools.py" line="722"/>
         <source>Metadata is valid!</source>
         <translation>La métadonnée est valide !</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="739"/>
+        <location filename="../metatools.py" line="748"/>
         <source>Select metadata file</source>
         <translation>Sélectionner le fichier de métadonnée</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="755"/>
+        <location filename="../metatools.py" line="764"/>
         <source>Metadata can&apos;t be imported: </source>
-        <translation>Les métadonnées peuvent pas être importées :</translation>
+        <translation>Les métadonnées peuvent pas être importées: </translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="765"/>
+        <location filename="../metatools.py" line="774"/>
         <source>Metadata was imported successful!</source>
         <translation>Métadonnées importées avec succès!</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="778"/>
+        <location filename="../metatools.py" line="787"/>
         <source>Save metadata to file</source>
         <translation>Enregistrer les métadonnées dans un fichier</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="794"/>
+        <location filename="../metatools.py" line="803"/>
         <source>Metadata can&apos;t be exported: </source>
-        <translation>Les métadonnée ne peuvent pas être exportées :</translation>
+        <translation>Les métadonnée ne peuvent pas être exportées: </translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="804"/>
+        <location filename="../metatools.py" line="813"/>
         <source>Metadata was exported successful!</source>
         <translation>Métadonnées exportées avec succès!</translation>
     </message>
@@ -532,28 +637,30 @@
         <location filename="../metatools.py" line="81"/>
         <source>Quantum GIS version detected: %d.%d
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Version de QGIS détectée: %d.%d
+</translation>
     </message>
     <message>
         <location filename="../metatools.py" line="97"/>
         <source>Qt version detected: %s
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Version Qt détectée: %s
+</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="377"/>
+        <location filename="../metatools.py" line="386"/>
         <source>Editor can&apos;t be loaded: %s %s!</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;éditeur ne peut pas être chargé: %s %s&#xa0;!</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="425"/>
+        <location filename="../metatools.py" line="434"/>
         <source>Applyer can&apos;t be loaded: %s %s!</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;application ne peut pas être chargée: %s %s!</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="441"/>
+        <location filename="../metatools.py" line="450"/>
         <source>Viewer can&apos;t be loaded: %s %s!</source>
-        <translation type="unfinished"></translation>
+        <translation>La visionneuse ne peut pas être chargée: %s %s!</translation>
     </message>
     <message>
         <location filename="../metadata_provider.py" line="91"/>
@@ -564,6 +671,11 @@
         <location filename="../metadata_provider.py" line="195"/>
         <source>Unable to handle file: {self.metaFilePath}</source>
         <translation>Impossible de gérer le fichier: {self.metaFilePath}</translation>
+    </message>
+    <message>
+        <location filename="../metatools.py" line="245"/>
+        <source>About plugin…</source>
+        <translation>À propos du plugin…</translation>
     </message>
 </context>
 <context>
@@ -636,18 +748,19 @@
     <message>
         <location filename="../ui/editor.ui" line="156"/>
         <source>Copy node path to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Copier le chemin du nœud dans le presse-papiers</translation>
     </message>
     <message>
         <location filename="../metatoolseditor.py" line="237"/>
         <source>Metadata can&apos;t be saved:
 </source>
-        <translation>Les métadonnées peuvent pas être enregistrées :</translation>
+        <translation>Les métadonnées peuvent pas être enregistrées:
+</translation>
     </message>
     <message>
         <location filename="../metatoolseditor.py" line="254"/>
         <source>Can&apos;t open file %s</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;ouvrir le fichier %s</translation>
     </message>
 </context>
 <context>
@@ -665,12 +778,12 @@
     <message>
         <location filename="../metatoolssettings.py" line="161"/>
         <source>Select file</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner le fichier</translation>
     </message>
     <message>
         <location filename="../metatoolssettings.py" line="161"/>
         <source>Executable files (*.exe *.EXE);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Executable files (*.exe *.EXE);;All files (*)</translation>
     </message>
 </context>
 <context>
@@ -738,22 +851,22 @@
     <message>
         <location filename="../ui/settings.ui" line="101"/>
         <source>FGDC tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Outils FGDC</translation>
     </message>
     <message>
         <location filename="../ui/settings.ui" line="139"/>
         <source>mp</source>
-        <translation type="unfinished"></translation>
+        <translation>mp</translation>
     </message>
     <message>
         <location filename="../ui/settings.ui" line="149"/>
         <source>err2html</source>
-        <translation type="unfinished"></translation>
+        <translation>err2html</translation>
     </message>
     <message>
         <location filename="../ui/settings.ui" line="163"/>
         <source>tkme</source>
-        <translation type="unfinished"></translation>
+        <translation>tkme</translation>
     </message>
 </context>
 <context>
@@ -932,7 +1045,7 @@
     <message>
         <location filename="../workflow_editor_dialog.py" line="153"/>
         <source>Template can&apos;t be saved: </source>
-        <translation>Le modèle ne peut être sauvegardé :</translation>
+        <translation>Le modèle ne peut être sauvegardé: </translation>
     </message>
     <message>
         <location filename="../workflow_editor_dialog.py" line="187"/>

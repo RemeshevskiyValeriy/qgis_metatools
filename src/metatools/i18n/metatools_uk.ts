@@ -2,6 +2,111 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="uk_UA">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="../about_dialog.py" line="77"/>
+        <source> by NextGIS</source>
+        <translation> від NextGIS</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="214"/>
+        <source>REPORT_END</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="219"/>
+        <source>Developers</source>
+        <translation>Розробники</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="220"/>
+        <source>Homepage</source>
+        <translation>Домашня сторінка</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="221"/>
+        <source>Please report bugs at</source>
+        <translation>Будь ласка, повідомляйте про баги в</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="223"/>
+        <source>bugtracker</source>
+        <translation>багтрекер</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="224"/>
+        <source>Video with an overview of the plugin</source>
+        <translation>Відео з оглядом плагіна</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="225"/>
+        <source>Other helpful services by NextGIS</source>
+        <translation>Інші корисні послуги від NextGIS</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="226"/>
+        <source>Convenient up-to-date data extracts for any place in the world</source>
+        <translation>Зручна вибірка актуальних даних з будь-якої точки світу</translation>
+    </message>
+    <message>
+        <location filename="../about_dialog.py" line="229"/>
+        <source>Fully featured Web GIS service</source>
+        <translation>Повнофункціональний Веб ГІС-сервіс</translation>
+    </message>
+</context>
+<context>
+    <name>AboutDialogBase</name>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="14"/>
+        <source>About {plugin_name}</source>
+        <translation>Про модуль {plugin_name}</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="33"/>
+        <source>Information</source>
+        <translation>Інформація</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="54"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="72"/>
+        <source>License</source>
+        <translation>Ліцензія</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="94"/>
+        <source>Components</source>
+        <translation>Компоненти</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="116"/>
+        <source>Contributors</source>
+        <translation>Дописувачі</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="158"/>
+        <source>{plugin_name}</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="168"/>
+        <source>Version {version}</source>
+        <translation>Версія {version}</translation>
+    </message>
+    <message>
+        <location filename="../ui/about_dialog_base.ui" line="203"/>
+        <source>Get involved</source>
+        <translation>Приєднувати</translation>
+    </message>
+</context>
+<context>
     <name>ApplyTemplatesDialog</name>
     <message>
         <location filename="../apply_templates_dialog.py" line="87"/>
@@ -409,12 +514,12 @@
         <translation>Налаштувати модуль</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="804"/>
+        <location filename="../metatools.py" line="813"/>
         <source>Metatools</source>
         <translation>Metatools</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="527"/>
+        <location filename="../metatools.py" line="536"/>
         <source>Metadata file can&apos;t be created: </source>
         <translation>Не вдалося створити файл метаданих: </translation>
     </message>
@@ -464,67 +569,67 @@
         <translation>Інструмент MP</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="296"/>
+        <location filename="../metatools.py" line="304"/>
         <source>Metatools: FGDC tools</source>
         <translation>Metatools: інструменти FGDC</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="557"/>
+        <location filename="../metatools.py" line="566"/>
         <source>USGS tool support only FGDC standard!</source>
         <translation>Інструмент USGC підтримує лише стандарт FGDC!</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="581"/>
+        <location filename="../metatools.py" line="590"/>
         <source>USGS tool can&apos;t be runing: </source>
         <translation>Не вдалося запустити інструмент FGDC: </translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="603"/>
+        <location filename="../metatools.py" line="612"/>
         <source>MP tool support only FGDC standard!</source>
         <translation>Інструмент MP підтримує лише стандарт FGDC!</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="651"/>
+        <location filename="../metatools.py" line="660"/>
         <source>MP tool can&apos;t be runing: </source>
         <translation>Не вдалося запустити інструмент MP: </translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="672"/>
+        <location filename="../metatools.py" line="681"/>
         <source>MP result</source>
         <translation>Результат обробки MP</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="713"/>
+        <location filename="../metatools.py" line="722"/>
         <source>Metadata is valid!</source>
         <translation>Метадані відповідають стандарту!</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="739"/>
+        <location filename="../metatools.py" line="748"/>
         <source>Select metadata file</source>
         <translation>Виберіть файл з метаданими</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="755"/>
+        <location filename="../metatools.py" line="764"/>
         <source>Metadata can&apos;t be imported: </source>
         <translation>Не вдалося імпортувати метадані: </translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="765"/>
+        <location filename="../metatools.py" line="774"/>
         <source>Metadata was imported successful!</source>
         <translation>Метадані імпортовані успішно!</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="778"/>
+        <location filename="../metatools.py" line="787"/>
         <source>Save metadata to file</source>
         <translation>Зберегти метадані</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="794"/>
+        <location filename="../metatools.py" line="803"/>
         <source>Metadata can&apos;t be exported: </source>
         <translation>Не вдалося єкспортувати метадані: </translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="804"/>
+        <location filename="../metatools.py" line="813"/>
         <source>Metadata was exported successful!</source>
         <translation>Експорт метаданих виконано!</translation>
     </message>
@@ -543,17 +648,17 @@
 </translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="377"/>
+        <location filename="../metatools.py" line="386"/>
         <source>Editor can&apos;t be loaded: %s %s!</source>
         <translation>Не вдалося завантажити редактор: %s %s!</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="425"/>
+        <location filename="../metatools.py" line="434"/>
         <source>Applyer can&apos;t be loaded: %s %s!</source>
         <translation>Не вдалося завантажити редактор шаблонів: %s %s!</translation>
     </message>
     <message>
-        <location filename="../metatools.py" line="441"/>
+        <location filename="../metatools.py" line="450"/>
         <source>Viewer can&apos;t be loaded: %s %s!</source>
         <translation>Не вдалося завантажити переглядач: %s %s!</translation>
     </message>
@@ -566,6 +671,11 @@
         <location filename="../metadata_provider.py" line="195"/>
         <source>Unable to handle file: {self.metaFilePath}</source>
         <translation>Не вдається обробити файл: {self.metaFilePath}</translation>
+    </message>
+    <message>
+        <location filename="../metatools.py" line="245"/>
+        <source>About plugin…</source>
+        <translation>Про модуль…</translation>
     </message>
 </context>
 <context>
